@@ -1,6 +1,18 @@
 jQuery(document).ready(function() {
+    
     $("#word-cloud").click(function() {
-        get_word_cloud();
+        var text = $('#text').val();
+        if (text != '') {
+            // $('#word-cloud').prop('disabled', true);
+            clear_word_cloud();
+            create_word_cloud(text);
+        }
+    });
+
+    $("#clear-cloud").click(function() {
+        clear_word_cloud();
+        $("#text").val('');
+        $('#word-cloud').prop('disabled', false);
     });
 
     function get_word_cloud() {
@@ -29,21 +41,23 @@ jQuery(document).ready(function() {
          * Create an array of word objects, each representing a word in the cloud
          */
         var word_array = [];
-        var listOfObjects = json.split(" ");
+        // split by enter and space
+        var listOfObjects = json.split(/\s+/g);
+        console.log(listOfObjects);
         listOfObjects.forEach(function(entry) {
             var single_word = {};
             var index;
             var do_exist;
             [index,do_exist] = isInArray(word_array,entry);
             if (do_exist) {
-            	console.log(entry + " word present");
+            	// console.log(entry + " word present");
             	var already_present_word = {};
                 already_present_word = word_array[index];
                 already_present_word['weight'] += 5;
                 // console.log(already_present_word);
             } 
             else {
-            	console.log(entry + " word not present");
+            	// console.log(entry + " word not present");
                 single_word['text'] = entry.toLowerCase();
                 single_word['weight'] = 5;
             	word_array.push(single_word);
@@ -68,5 +82,9 @@ jQuery(document).ready(function() {
     		}
     	}
     	return [-1,false];
+    }
+
+    function clear_word_cloud() {
+        $("#example").empty();
     }
 });

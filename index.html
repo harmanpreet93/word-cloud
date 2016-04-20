@@ -11,19 +11,10 @@
 
     <title>Word Cloud</title>
 
-    <!-- Bootstrap Core CSS -->
+    <!-- CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/jqcloud.css" />
-
-    <!-- Custom CSS -->
     <link href="css/word-cloud.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -36,7 +27,18 @@
 
             <div class="col-md-3">
                 <div class="list-group">
-                    <button class="list-group-item active" id="word-cloud" type="submit">Get Word Cloud</button>
+                    <!-- <a id="word-cloud" class="list-group-item ">Get Word Cloud</a> -->
+                    <!-- <a id="clear-cloud" class="list-group-item ">Clear</a> -->
+                   <form role="form">
+                        <div class="form-group">
+                          <label for="text">Text:</label>
+                          <textarea class="form-control" rows="8" id="text"></textarea>
+                        </div>
+                      </form>
+                    <br>
+                     <button class="list-group-item " id="word-cloud" type="submit">Get Word Cloud</button>
+                    <button class="list-group-item " id="clear-cloud" type="submit">Clear</button>
+
                 </div>
             </div>
 
